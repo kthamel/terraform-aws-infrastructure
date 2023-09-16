@@ -31,12 +31,11 @@ resource "aws_eks_node_group" "private-nodes" {
   node_group_name = "private-nodes"
   node_role_arn   = aws_iam_role.kthamel-eks-nodes-iam-role.arn
 
-  subnet_ids = "${aws_subnet.kthamel-eks-subnet-.*.id}"
-  # subnet_ids = [
-  #   aws_subnet.kthamel-eks-subnet-1,
-  #   aws_subnet.kthamel-eks-subnet-2,
-  #   aws_subnet.kthamel-eks-subnet-3
-  # ]
+  subnet_ids = [
+    aws_subnet.kthamel-eks-subnet-1.id,
+    aws_subnet.kthamel-eks-subnet-2.id,
+    aws_subnet.kthamel-eks-subnet-3.id
+  ]
 
   capacity_type  = "ON_DEMAND"
   instance_types = ["t2.micro"]
