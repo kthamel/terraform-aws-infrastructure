@@ -5,7 +5,7 @@ data "aws_iam_policy_document" "kthamel-eks-iam-oidc-policy" {
     condition {
       test     = "StringEquals"
       variable = replace(aws_iam_openid_connect_provider.kthamel-eks-openid.url, "https://", "")
-      values   = ["system:serviceaccount:default:aws-test"]
+      values   = ["system:serviceaccount:default:kthamel-eks-oidc-role"]
     }
     principals {
       identifiers = ["aws_iam_openid_connect_provider.kthamel-eks-openid.arn"]
