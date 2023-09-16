@@ -51,4 +51,3 @@ resource "aws_eks_node_group" "private-nodes" {
     node_type = "workers"
   }
 }
-kthamel-eks-nodes-iam-role
