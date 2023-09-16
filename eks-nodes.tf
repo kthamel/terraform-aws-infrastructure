@@ -26,7 +26,8 @@ resource "aws_iam_role_policy_attachment" "kthamel-eks-node-iam-role-policy" {
 }
 
 resource "aws_iam_role_policy_attachment" "kthamel-eks-ecr-iam-role-policy" {
-  policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryPolicy"
+  # policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryPolicy"
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryFullAccess"
   role       = aws_iam_role.kthamel-eks-nodes-iam-role.name
 }
 
