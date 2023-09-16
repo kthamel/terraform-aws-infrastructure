@@ -23,17 +23,17 @@ resource "aws_iam_policy" "kthamel-eks-iam-policy-oidc" {
   name = "kthamel-eks-iam-policy-oidc"
 
   policy = jsonencode({
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Principal": {
-                "Service": "s3.amazonaws.com"
-            },
-            "Action": "sts:AssumeRole"
-        }
+    "Version" : "2012-10-17",
+    "Statement" : [
+      {
+        "Effect" : "Allow",
+        "Principal" : {
+          "Service" : "s3.amazonaws.com"
+        },
+        "Action" : "sts:AssumeRole"
+      }
     ]
-})
+  })
 }
 
 resource "aws_iam_policy_attachment" "kthamel-eks-iam-policy-attach-oidc" {
