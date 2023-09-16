@@ -2,13 +2,15 @@ data "aws_iam_policy_document" "kthamel-eks-iam-oidc-policy" {
   statement {
     actions = ["sts:AssumeRoleWithWebIdentity"]
     effect  = "Allow"
+
     condition {
       test     = "StringEquals"
-      variable = replace(aws_iam_openid_connect_provider.kthamel-eks-openid.url, "https://", "")
+      variable = "${replace(aws_iam_openid_connect_provider.kthamel-eks-openid.url, "https://", "")}:sub"
       values   = ["system:serviceaccount:default:kthamel-eks-oidc-role"]
     }
+
     principals {
-      identifiers = ["aws_iam_openid_connect_provider.kthamel-eks-openid.arn"]
+      identifiers = [aws_iam_openid_connect_provider.kthamel-eks-openid.arn]
       type        = "Federated"
     }
   }
