@@ -1,17 +1,21 @@
 resource "aws_iam_role" "kthamel-eks-nodes-iam-role" {
   name = "kthamel-eks-nodes-iam-role"
   assume_role_policy = jsonencode({
-    Version : "2012-10-17"
-    Statement : [
-      {
-        "Sid" : "Statement1",
-        "Action" : "sts:AssumeRole",
-        "Effect" : "Allow",
-        "Principal" : {
-          "service" : "ec2.amazonaws.com"
-        },
-    }]
-  })
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "sts:AssumeRole"
+            ],
+            "Principal": {
+                "Service": [
+                    "ec2.amazonaws.com"
+                ]
+            }
+        }
+    ]
+})
 
   tags = local.common_tags
 }
