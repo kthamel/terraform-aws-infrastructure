@@ -23,16 +23,17 @@ resource "aws_iam_policy" "kthamel-eks-iam-policy-oidc" {
   name = "kthamel-eks-iam-policy-oidc"
 
   policy = jsonencode({
-    statement = [{
-      Action = [
-        "s3:ListAllMyBuckets",
-        "s3:GetBucketLocation"
-      ]
-      Effect   = "Allow"
-      Resource = "arn:aws:s3:::*"
-    }]
-    Version = "2012-10-17"
-  })
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "Service": "s3.amazonaws.com"
+            },
+            "Action": "sts:AssumeRole"
+        }
+    ]
+})
 }
 
 resource "aws_iam_policy_attachment" "kthamel-eks-iam-policy-attach-oidc" {

@@ -2,17 +2,20 @@ resource "aws_iam_role" "kthamel-eks-cluster-iam-role" {
   name               = "kthamel-eks-cluster-iam-role"
   assume_role_policy = <<POLICY
 {
-	"Version": "2012-10-17",
-	"Statement": [
-		{
-			"Sid": "Statement1",
-			"Effect": "Allow",
-			"Principal": {
-                "service": "eks.amazonaws.com"
-            },
-			"Action": "sts:AssumeRole"
-		}
-	]
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Action": [
+                "sts:AssumeRole"
+            ],
+            "Effect": "Allow",
+            "Principal": {
+                "Service": [
+                    "eks.amazonaws.com"
+                ]
+            }
+        }
+    ]
 } 
   POLICY
 
