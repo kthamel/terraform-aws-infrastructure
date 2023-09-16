@@ -21,7 +21,7 @@ resource "aws_iam_role" "kthamel-eks-nodes-iam-role" {
 }
 
 resource "aws_iam_role_policy_attachment" "kthamel-eks-node-iam-role-policy" {
-  policy_arn = "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy"  
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy"
   role       = aws_iam_role.kthamel-eks-nodes-iam-role.name
 }
 
@@ -44,7 +44,7 @@ resource "aws_eks_node_group" "private-nodes" {
   capacity_type  = "ON_DEMAND"
   instance_types = ["t2.micro"]
   scaling_config {
-    desired_size = 1
+    desired_size = 2
     min_size     = 0
     max_size     = 2
   }
