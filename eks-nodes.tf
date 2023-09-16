@@ -5,7 +5,7 @@ resource "aws_iam_role" "kthamel-eks-nodes-iam-role" {
     Statement : [
       {
         "Sid" : "Statement1",
-        "Action" : "sts:AssumeRole"
+        "Action" : "sts:AssumeRole",
         "Effect" : "Allow",
         "Principal" : {
           "service" : "ec2.amazonaws.com"
@@ -51,3 +51,4 @@ resource "aws_eks_node_group" "private-nodes" {
     node_type = "workers"
   }
 }
+kthamel-eks-nodes-iam-role
