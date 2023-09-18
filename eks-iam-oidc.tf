@@ -42,6 +42,6 @@ resource "aws_iam_policy_attachment" "kthamel-eks-iam-policy-attach-oidc" {
   policy_arn = aws_iam_role.kthamel-eks-iam-role-oidc.arn
 }
 
-output "kthamel-eks-oidc-policy-arn" {
-  value = aws_iam_role.kthamel-eks-iam-role-oidc.arn
-}
+# output "kthamel-eks-oidc-policy-arn" {
+#   value = aws_iam_role.kthamel-eks-iam-role-oidc.arn
+# }
