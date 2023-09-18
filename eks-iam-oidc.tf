@@ -41,7 +41,7 @@ resource "aws_iam_policy" "kthamel-eks-iam-policy-oidc" {
 
 resource "aws_iam_policy_attachment" "kthamel-eks-iam-policy-attach-oidc" {
   name       = "kthamel-eks-iam-policy-attach-oidc"
-  roles      = aws_iam_role.kthamel-eks-iam-role-oidc.role
+  roles      = aws_iam_role.kthamel-eks-iam-role-oidc.roles
   policy_arn = aws_iam_role.kthamel-eks-iam-role-oidc.arn
 }
 
