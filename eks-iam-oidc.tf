@@ -29,9 +29,7 @@ resource "aws_iam_policy" "kthamel-eks-iam-policy-oidc" {
     "Statement" : [
       {
         "Effect" : "Allow",
-        "Principal" : {
-          "Service" : "s3.amazonaws.com"
-        },
+        "Principal" : { "Service" : "s3.amazonaws.com" }
         "Action" : "sts:AssumeRole"
       }
     ]
