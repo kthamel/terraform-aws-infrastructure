@@ -39,18 +39,18 @@ resource "aws_iam_role" "kthamel-eks-iam-role-oidc" {
 resource "aws_iam_policy" "kthamel-eks-iam-policy-oidc" {
   name = "kthamel-eks-iam-policy-oidc"
   policy = jsonencode({
-	"Version": "2012-10-17",
-	"Statement": [
-		{
-			"Sid": "Statement",
-			"Effect": "Allow",
-			"Action": [
-				"s3:*"
-			],
-			"Resource": []
-		}
-	]
-})
+    "Version" : "2012-10-17",
+    "Statement" : [
+      {
+        "Sid" : "Statement",
+        "Effect" : "Allow",
+        "Action" : [
+          "s3:*"
+        ],
+        "Resource" : []
+      }
+    ]
+  })
 }
 
 resource "aws_iam_policy_attachment" "kthamel-eks-iam-policy-attach-oidc" {
