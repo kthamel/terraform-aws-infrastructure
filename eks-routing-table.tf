@@ -1,5 +1,5 @@
 resource "aws_route_table" "kthamel-eks-private-routing" {
-  vpc_id = "{aws_vpc.kthaml-eks-vpc.id}"
+  vpc_id = aws_vpc.kthaml-eks-vpc.id
   route = [
     {
       cidr_block                 = "0.0.0.0/0"
