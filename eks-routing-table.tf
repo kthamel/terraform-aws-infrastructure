@@ -9,7 +9,7 @@ resource "aws_route_table" "kthamel-eks-private-routing" {
       destination_prefix_list_id = ""
       egress_only_gateway_id     = ""
       gateway_id                 = ""
-      ipv6_cidr_block            = "::/0"
+      ipv6_cidr_block            = null
       local_gateway_id           = ""
       network_interface_id       = ""
       transit_gateway_id         = ""
