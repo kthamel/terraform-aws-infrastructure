@@ -21,21 +21,6 @@ resource "aws_iam_role" "kthamel-eks-iam-role-oidc" {
   assume_role_policy = data.aws_iam_policy_document.kthamel-eks-iam-oidc-policy.json
 }
 
-# resource "aws_iam_policy" "kthamel-eks-iam-policy-oidc" {
-#   name = "kthamel-eks-iam-policy-oidc"
-
-#   policy = jsonencode({
-#     "Version" : "2012-10-17",
-#     "Statement" : [
-#       {
-#         "Effect" : "Allow"
-#         "Principal" : { "Service" : "s3.amazonaws.com" }
-#         "Action" : "sts:AssumeRole"
-#       }
-#     ]
-#   })
-# }
-
 resource "aws_iam_policy" "kthamel-eks-iam-policy-oidc" {
   name = "kthamel-eks-iam-policy-oidc"
   policy = jsonencode({
@@ -44,6 +29,7 @@ resource "aws_iam_policy" "kthamel-eks-iam-policy-oidc" {
       {
         "Sid" : "Statement",
         "Effect" : "Allow",
+        "Resource" = "arn:aws:s3:::*",
         "Action" : [
           "s3:*"
         ],
@@ -55,7 +41,7 @@ resource "aws_iam_policy" "kthamel-eks-iam-policy-oidc" {
 
 resource "aws_iam_policy_attachment" "kthamel-eks-iam-policy-attach-oidc" {
   name       = "kthamel-eks-iam-policy-attach-oidc"
-  roles      = (["aws_iam_role.kthamel-eks-iam-role-oidc.name"])
+  roles      = aws_iam_role.kthamel-eks-iam-role-oidc.name
   policy_arn = aws_iam_role.kthamel-eks-iam-role-oidc.arn
 }
 
