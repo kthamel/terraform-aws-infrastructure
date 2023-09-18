@@ -21,7 +21,7 @@ resource "aws_iam_role" "kthamel-eks-nodes-iam-role" {
 }
 
 resource "aws_iam_role_policy_attachment" "kthamel-eks-node-iam-role-policy" {
-  policy_arn = "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy"
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy"  
   role       = aws_iam_role.kthamel-eks-nodes-iam-role.name
 }
 
