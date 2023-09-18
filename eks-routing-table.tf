@@ -3,13 +3,13 @@ resource "aws_route_table" "kthamel-eks-private-routing" {
   route = [
     {
       cidr_block                 = "0.0.0.0/0"
-      nat_gateway_id             = aws_nat_gateway.kthamel-eks-nat-gw.id
+      nat_gateway_id             = "{aws_nat_gateway.kthamel-eks-nat-gw.id}"
       carrier_gateway_id         = ""
       core_network_arn           = ""
       destination_prefix_list_id = ""
       egress_only_gateway_id     = ""
       gateway_id                 = ""
-      ipv6_cidr_block            = ""
+      ipv6_cidr_block            = "::/0"
       local_gateway_id           = ""
       network_interface_id       = ""
       transit_gateway_id         = ""
