@@ -33,7 +33,9 @@ resource "aws_iam_policy" "kthamel-eks-iam-policy-oidc" {
         "Action" : [
           "s3:*"
         ],
-        "Resource" : []
+        "Resource" : [
+          "arn:aws:s3:::*"
+        ]
       }
     ]
   })
