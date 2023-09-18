@@ -30,6 +30,11 @@ resource "aws_iam_role_policy_attachment" "kthamel-eks-ecr-iam-role-policy" {
   role       = aws_iam_role.kthamel-eks-nodes-iam-role.name
 }
 
+resource "aws_iam_role_policy_attachment" "kthamel-eks-cni-iam-role-policy" {
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy"
+  role       = aws_iam_role.kthamel-eks-nodes-iam-role.name
+}
+
 resource "aws_eks_node_group" "private-nodes" {
   cluster_name    = aws_eks_cluster.kthamel-eks-cluster.name
   node_group_name = "private-nodes"
