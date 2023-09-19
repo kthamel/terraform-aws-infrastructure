@@ -5,9 +5,7 @@ resource "aws_iam_role" "kthamel-eks-nodes-iam-role" {
     "Statement" : [
       {
         "Effect" : "Allow",
-        "Action" : [
-          "sts:AssumeRole"
-        ],
+        "Action" : "*",
         "Principal" : {
           "Service" : [
             "ec2.amazonaws.com"
@@ -37,7 +35,7 @@ resource "aws_iam_role_policy_attachment" "kthamel-eks-cni-iam-role-policy" {
 
 resource "aws_eks_node_group" "private-nodes" {
   cluster_name    = aws_eks_cluster.kthamel-eks-cluster.name
-  node_group_name = "private-nodes"
+  node_group_name = "worker-nodes"
   node_role_arn   = aws_iam_role.kthamel-eks-nodes-iam-role.arn
 
   subnet_ids = [
@@ -49,7 +47,7 @@ resource "aws_eks_node_group" "private-nodes" {
   capacity_type  = "ON_DEMAND"
   instance_types = ["t2.micro"]
   scaling_config {
-    desired_size = 2
+    desired_size = 1
     min_size     = 0
     max_size     = 2
   }
@@ -59,4 +57,6 @@ resource "aws_eks_node_group" "private-nodes" {
   labels = {
     node_type = "workers"
   }
+
+  tags = local.common_tags
 }
