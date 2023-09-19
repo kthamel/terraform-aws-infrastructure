@@ -5,12 +5,10 @@ resource "aws_iam_role" "kthamel-eks-nodes-iam-role" {
     "Statement" : [
       {
         "Effect" : "Allow",
-        "Action" : "*",
         "Principal" : {
-          "Service" : [
-            "ec2.amazonaws.com"
-          ]
-        }
+          "Service" : "ec2.amazonaws.com"
+        },
+        "Action" : "sts:AssumeRole"
       }
     ]
   })
